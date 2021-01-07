@@ -1,5 +1,6 @@
 import express from "express";
 import router from "./routes";
+import './database/connection';
 
 export default class Server{
 	app: any;
@@ -19,4 +20,4 @@ export default class Server{
 	}
 }
 
-let server = new Server(3000);
+let server = new Server(3001);

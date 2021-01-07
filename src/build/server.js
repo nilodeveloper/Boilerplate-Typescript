@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var express_1 = __importDefault(require("express"));
 var routes_1 = __importDefault(require("./routes"));
+require("./database/connection");
 var Server = (function () {
     function Server(port) {
         this.app = express_1["default"]();
@@ -20,4 +21,4 @@ var Server = (function () {
     return Server;
 }());
 exports["default"] = Server;
-var server = new Server(3000);
+var server = new Server(3001);

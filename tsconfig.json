@@ -5,6 +5,8 @@
   	"removeComments": true,
   	"preserveConstEnums": true,
 		"esModuleInterop": true,
-		"outDir": "./src/build/"
+		"outDir": "./src/build/",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true
 	}
 }
