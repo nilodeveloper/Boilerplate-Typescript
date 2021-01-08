@@ -12,10 +12,7 @@ var UserRouter = (function () {
         return this.routes();
     }
     UserRouter.prototype.index = function () {
-        var _this = this;
-        return this.router.get('/users', function (req, res) {
-            return _this.userController.index(req, res);
-        });
+        return this.router.get('/users', this.userController.index);
     };
     UserRouter.prototype.save = function () {
         return this.router.post('/register/user', this.userController.save);
@@ -28,4 +25,4 @@ var UserRouter = (function () {
     };
     return UserRouter;
 }());
-exports["default"] = UserRouter;
+exports["default"] = new UserRouter();

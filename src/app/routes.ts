@@ -11,7 +11,7 @@ export default class Router{
 	}
 
 	user() {	
-		return this.userRouter = new UserRouter();
+		return UserRouter;
 	}
 
 	routes(): any{

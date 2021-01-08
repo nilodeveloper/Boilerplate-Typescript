@@ -11,7 +11,7 @@ var Router = (function () {
         return this.routes();
     }
     Router.prototype.user = function () {
-        return this.userRouter = new UserRouter_1["default"]();
+        return UserRouter_1["default"];
     };
     Router.prototype.routes = function () {
         return [

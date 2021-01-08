@@ -13,9 +13,7 @@ class UserRouter{
 	}
 
 	index(){
-		return this.router.get('/users', (req: Request, res: Response)=>{
-			return this.userController.index(req, res)
-		})
+		return this.router.get('/users', this.userController.index)
 	}
 
 	save(){
@@ -30,4 +28,4 @@ class UserRouter{
 	}
 }
 
-export default UserRouter;
+export default new UserRouter();
