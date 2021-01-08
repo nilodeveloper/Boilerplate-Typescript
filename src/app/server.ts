@@ -7,6 +7,7 @@ export default class Server{
 	
 	constructor(port: number){
 		this.app = express();
+		this.app.use(express.json());
 		this.route();
 		this.boot(port);
 	}

@@ -19,9 +19,7 @@ class UserRouter{
 	}
 
 	save(){
-		return this.router.get('/register/user', (req: Request, res: Response)=>{
-			return this.userController.save(req, res)
-		})
+		return this.router.post('/register/user', this.userController.save)
 	}
 
 	routes(): any{

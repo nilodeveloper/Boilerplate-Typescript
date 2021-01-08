@@ -9,6 +9,7 @@ require("./database/connection");
 var Server = (function () {
     function Server(port) {
         this.app = express_1["default"]();
+        this.app.use(express_1["default"].json());
         this.route();
         this.boot(port);
     }

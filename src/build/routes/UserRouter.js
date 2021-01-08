@@ -18,10 +18,7 @@ var UserRouter = (function () {
         });
     };
     UserRouter.prototype.save = function () {
-        var _this = this;
-        return this.router.get('/register/user', function (req, res) {
-            return _this.userController.save(req, res);
-        });
+        return this.router.post('/register/user', this.userController.save);
     };
     UserRouter.prototype.routes = function () {
         return [

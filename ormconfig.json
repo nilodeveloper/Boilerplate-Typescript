@@ -6,7 +6,7 @@
    "password": "abc123",
    "database": "oni",
    "entities": [
-      "src/models/**/*.ts"
+      "src/build/database/entity/**/*.js"
    ],
    "migrations": [
       "./src/build/database/migrations/**/*.js"
@@ -15,6 +15,7 @@
       "src/subscriber/**/*.ts"
    ],
 	 "cli": {
-   		"migrationsDir": "./src/app/database/migrations/"
+   		"migrationsDir": "./src/app/database/migrations/",
+			"entitiesDir": "./src/app/database/entity/"
    }
 }
