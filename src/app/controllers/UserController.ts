@@ -3,8 +3,8 @@ import { getRepository } from "typeorm";
 import User from '../database/entity/User';
 
 class UserController{	
-	index(req: Request, res: Response){	
-		res.send('Heyyy users here!')
+	async index(req: Request, res: Response){	
+		const repository = getRepository(User);
 	}
 
 	async save(req: Request, res: Response){	
