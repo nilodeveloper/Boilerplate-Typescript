@@ -45,7 +45,17 @@ var UserController = (function () {
     function UserController() {
     }
     UserController.prototype.index = function (req, res) {
-        res.send('Heyyy users here!');
+        return __awaiter(this, void 0, void 0, function () {
+            var user;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4, typeorm_1.getRepository(User_1["default"]).createQueryBuilder("user").getMany()];
+                    case 1:
+                        user = _a.sent();
+                        return [2, res.json(user)];
+                }
+            });
+        });
     };
     UserController.prototype.save = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {

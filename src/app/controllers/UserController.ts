@@ -4,7 +4,8 @@ import User from '../database/entity/User';
 
 class UserController{	
 	async index(req: Request, res: Response){	
-		const repository = getRepository(User);
+		const user = await getRepository(User).createQueryBuilder("user").getMany();
+		return res.json(user)
 	}
 
 	async save(req: Request, res: Response){	
