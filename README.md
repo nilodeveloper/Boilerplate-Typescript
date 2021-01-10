@@ -1,4 +1,4 @@
-# Default_Project_Init
+# Default Project Init (DPI)
 Projeto padrão em Typescript. Esse projeto tem o objetivo de servir como base para meus sistemas web.
 
 # Ferramentas
