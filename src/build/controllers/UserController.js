@@ -49,7 +49,8 @@ var UserController = (function () {
             var user;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4, typeorm_1.getRepository(User_1["default"]).createQueryBuilder("user").select(["username"]).getRawMany()];
+                    case 0: return [4, typeorm_1.getRepository(User_1["default"]).createQueryBuilder("user")
+                            .select(["username"]).getRawMany()];
                     case 1:
                         user = _a.sent();
                         return [2, res.json(user)];
