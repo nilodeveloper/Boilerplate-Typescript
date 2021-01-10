@@ -4,7 +4,8 @@ import User from '../database/entity/User';
 
 class UserController{	
 	async index(req: Request, res: Response){	
-		const user = await getRepository(User).createQueryBuilder("user").getMany();
+		const user = await getRepository(User).createQueryBuilder("user")
+		.select(["username"]).getRawMany();
 		return res.json(user)
 	}
 
