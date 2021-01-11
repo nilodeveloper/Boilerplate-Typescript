@@ -18,33 +18,28 @@ chai.should();
 		database: "oni"
 	};
 	var pool = new pg.Pool(config)
-
-afterEach(function(done) {		
+after(()=>{
 	pool.connect(function(err) {
   	if (err) throw err;
   	var sql = "DELETE FROM users WHERE username = 'teste'";
   	pool.query(sql, function (err, result) {
     	if (err) throw err;
-			else
-				done()
   	});
 	});
 })
+/*
+ *
+	pool.connect(function(err) {
+  	if (err) throw err;
+  	var sql = "INSERT INTO users (username, email, password) VALUES ('teste', 'teste@email.com', 'abc123')";
+  	pool.query(sql, function (err, result) {
+    	if (err) throw err;
+  	});
+	});
+ */
 
 describe('Usuario - Endpoints', () => {
-    describe('GET /users', () => {
-        it ('deve retornar usuários registrados - 200', done => {
-            chai.request(url_base)
-            .get('/users')
-            .send(user_default)
-            .end((err, res) => {
-                chai.assert.isNull(err);
-                chai.assert.isNotEmpty(res.body);
-                res.should.have.status(200);
-                done();
-            });
-        });
-    });
+
     describe('POST /register/user', () => {
         it ('deve retornar usuário criado - 200', done => {
             chai.request(url_base)
@@ -54,8 +49,38 @@ describe('Usuario - Endpoints', () => {
                 chai.assert.isNull(err);
                 chai.assert.isNotEmpty(res.body);
                 res.should.have.status(200);
-                done();
             });
+           done();
+
+        });
+						
+    });
+
+    describe('GET /users', () => {
+        it ('deve retornar usuários registrados - 200', done => {
+            chai.request(url_base)
+            .get('/users')
+            .send(user_default)
+            .end((err, res) => {
+                chai.assert.isNull(err);
+                chai.assert.isNotEmpty(res.body);
+                res.should.have.status(200);
+            });	
+            done();
         });
     });
+
+
+    describe('PUT /update/user', () => {
+        it ('deve alterar o email do usuário - 200', done => {
+            chai.request(url_base)
+            .put('/update/user')
+            .send({username: "teste", email: "teste_troca_email@email.com"})
+            .end((err, res) => {
+                res.should.have.status(200);
+            });
+            done();
+        });
+    });
+
 });
