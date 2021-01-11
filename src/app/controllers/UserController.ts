@@ -6,6 +6,7 @@ class UserController{
 	async index(req: Request, res: Response){	
 		const user = await getRepository(User).createQueryBuilder("user")
 		.select(["username"]).getRawMany();
+
 		return res.json(user)
 	}
 
