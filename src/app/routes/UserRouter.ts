@@ -20,10 +20,15 @@ class UserRouter{
 		return this.router.post('/register/user', this.userController.save)
 	}
 
+	update(){
+		return this.router.put('/update/user', this.userController.update)
+	}
+
 	routes(): any{
 		return [
 			this.index(),
-			this.save()
+			this.save(),
+			this.update()
 		];
 	}
 }

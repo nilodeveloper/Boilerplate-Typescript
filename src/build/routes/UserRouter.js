@@ -17,10 +17,14 @@ var UserRouter = (function () {
     UserRouter.prototype.save = function () {
         return this.router.post('/register/user', this.userController.save);
     };
+    UserRouter.prototype.update = function () {
+        return this.router.put('/update/user', this.userController.update);
+    };
     UserRouter.prototype.routes = function () {
         return [
             this.index(),
-            this.save()
+            this.save(),
+            this.update()
         ];
     };
     return UserRouter;

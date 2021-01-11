@@ -17,7 +17,17 @@ class UserController{
 		await repository.save(user);
 
 		return res.json(user);
+	}
 
+	async update(req: Request, res: Response){
+		const { email, username } = req.body;
+		const repository = getRepository(User).createQueryBuilder()
+    .update(User)
+    .set({ email: email })
+    .where("username = :username", { username: username })
+    .execute();
+		
+		return res.json({status: "operação realizada com sucesso"})
 	}
 }
 

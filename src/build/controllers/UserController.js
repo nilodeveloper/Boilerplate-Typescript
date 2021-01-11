@@ -75,6 +75,20 @@ var UserController = (function () {
             });
         });
     };
+    UserController.prototype.update = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, email, username, repository;
+            return __generator(this, function (_b) {
+                _a = req.body, email = _a.email, username = _a.username;
+                repository = typeorm_1.getRepository(User_1["default"]).createQueryBuilder()
+                    .update(User_1["default"])
+                    .set({ email: email })
+                    .where("username = :username", { username: username })
+                    .execute();
+                return [2, res.json({ status: "operação realizada com sucesso" })];
+            });
+        });
+    };
     return UserController;
 }());
 exports["default"] = UserController;
