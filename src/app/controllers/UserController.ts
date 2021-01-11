@@ -11,8 +11,8 @@ class UserController{
 
 	async save(req: Request, res: Response){	
 		const repository = getRepository(User);
-		const { username, password } = req.body;
-		const user = repository.create({ username, password });
+		const { username, email, password } = req.body;
+		const user = repository.create({ username, email, password });
 		await repository.save(user);
 
 		return res.json(user);

@@ -64,6 +64,11 @@ var CreateUserTable1610058718148 = (function () {
                                         isUnique: true
                                     },
                                     {
+                                        name: 'email',
+                                        type: 'varchar',
+                                        isUnique: true
+                                    },
+                                    {
                                         name: 'password',
                                         type: 'varchar'
                                     }

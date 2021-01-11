@@ -60,13 +60,13 @@ var UserController = (function () {
     };
     UserController.prototype.save = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var repository, _a, username, password, user;
+            var repository, _a, username, email, password, user;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         repository = typeorm_1.getRepository(User_1["default"]);
-                        _a = req.body, username = _a.username, password = _a.password;
-                        user = repository.create({ username: username, password: password });
+                        _a = req.body, username = _a.username, email = _a.email, password = _a.password;
+                        user = repository.create({ username: username, email: email, password: password });
                         return [4, repository.save(user)];
                     case 1:
                         _b.sent();

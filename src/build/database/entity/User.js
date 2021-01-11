@@ -25,6 +25,10 @@ var User = (function () {
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
+    ], User.prototype, "email");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
     ], User.prototype, "password");
     User = __decorate([
         typeorm_1.Entity('users')
