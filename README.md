@@ -5,6 +5,6 @@ Projeto padrão em Typescript. Esse projeto tem o objetivo de servir como base p
  - Vem com o postgres configurado na porta padrão (5432). Para alterar a configuração do banco de dados basta alterar o ormconfig.json
 
 # Ferramentas
-Linguagem | ORM | Framework Web | Framework TDD | Password-Hashing | Render
---- | --- | --- | --- | --- | ---
-Typescript | TypeORM | ExpressJS | Mocha/Chai | Bcrypt | Pug
+Linguagem | ORM | Framework Web | Framework TDD | Password-Hashing | Render | Auth
+--- | --- | --- | --- | --- | --- | ---
+Typescript | TypeORM | ExpressJS | Mocha/Chai | Bcrypt | Pug | JWT
