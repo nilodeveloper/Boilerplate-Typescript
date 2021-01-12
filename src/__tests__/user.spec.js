@@ -83,4 +83,29 @@ describe('Usuario - Endpoints', () => {
         });
     });
 
+		describe('POST /login/user', ()=>{
+			it('deve logar o usuário apenas se o token for válido', done => {
+				//	
+            chai.request(url_base)
+            .post('/login/user')
+            .set({ "Authorization": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RlIiwicGFzc3dvcmQiOiJhYmMxMjMiLCJpYXQiOjE2MTA0ODg2MTF9.x3PrzVLqf_nPAEmlKiDw2puS7ZNQxzWBieau2jAGBNM"})
+            .end((err, res) => {
+                res.should.have.status(200);
+            		done();
+            });
+			});
+		});		
+		describe('POST /login/user', ()=>{
+			it('NÃO deve logar o usuário se o token for inválido', done => {
+				//	
+            chai.request(url_base)
+            .post('/login/user')
+            .set({ "Authorization": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RlIiwicGFzc3dvcmQiOiJhYmMxMjMiLCJpYXQiOjE2MTA0ODg2MTF9.x3PrzVLqf_nPAEmlKiDw2puS7ZNQxzWBieau2jAGBNMerrado"})
+            .end((err, res) => {
+                res.should.have.status(403);
+            		done();
+            });
+			});
+		});		
+
 });

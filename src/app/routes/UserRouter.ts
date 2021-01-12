@@ -24,11 +24,16 @@ class UserRouter{
 		return this.router.put('/update/user', this.userController.update)
 	}
 
+	login(){
+		return this.router.post('/login/user', this.userController.login)
+	}
+
 	routes(): any{
 		return [
 			this.index(),
 			this.save(),
-			this.update()
+			this.update(),
+			this.login()
 		];
 	}
 }

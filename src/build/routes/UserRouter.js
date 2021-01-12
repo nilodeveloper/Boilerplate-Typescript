@@ -20,11 +20,15 @@ var UserRouter = (function () {
     UserRouter.prototype.update = function () {
         return this.router.put('/update/user', this.userController.update);
     };
+    UserRouter.prototype.login = function () {
+        return this.router.post('/login/user', this.userController.login);
+    };
     UserRouter.prototype.routes = function () {
         return [
             this.index(),
             this.save(),
-            this.update()
+            this.update(),
+            this.login()
         ];
     };
     return UserRouter;

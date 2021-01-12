@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -41,6 +60,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 var typeorm_1 = require("typeorm");
 var User_1 = __importDefault(require("../database/entity/User"));
+var auth_1 = __importDefault(require("../middlewares/auth"));
+var jwt = __importStar(require("jsonwebtoken"));
 var UserController = (function () {
     function UserController() {
     }
@@ -60,7 +81,7 @@ var UserController = (function () {
     };
     UserController.prototype.save = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var repository, _a, username, email, password, user;
+            var repository, _a, username, email, password, user, token;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -70,6 +91,8 @@ var UserController = (function () {
                         return [4, repository.save(user)];
                     case 1:
                         _b.sent();
+                        token = jwt.sign({ username: username, password: password }, process.env.SECRET);
+                        console.log('token', token);
                         return [2, res.json(user)];
                 }
             });
@@ -86,6 +109,15 @@ var UserController = (function () {
                     .where("username = :username", { username: username })
                     .execute();
                 return [2, res.json({ status: "operação realizada com sucesso" })];
+            });
+        });
+    };
+    UserController.prototype.login = function (req, res, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                new auth_1["default"](req, res, next);
+                res.json({ login: true });
+                return [2];
             });
         });
     };
