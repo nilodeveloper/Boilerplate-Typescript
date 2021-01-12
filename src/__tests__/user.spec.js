@@ -84,7 +84,7 @@ describe('Usuario - Endpoints', () => {
     });
 
 		describe('POST /login/user', ()=>{
-			it('deve logar o usuário apenas se o token for válido', done => {
+			it('deve logar o usuário apenas se o token for válido - 200', done => {
 				//	
             chai.request(url_base)
             .post('/login/user')
@@ -96,7 +96,7 @@ describe('Usuario - Endpoints', () => {
 			});
 		});		
 		describe('POST /login/user', ()=>{
-			it('NÃO deve logar o usuário se o token for inválido', done => {
+			it('NÃO deve logar o usuário se o token for inválido - 403', done => {
 				//	
             chai.request(url_base)
             .post('/login/user')

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout 10000 ./src/__tests__/*.spec.js",
+    "test": "mocha --exit --timeout 10000 ./src/__tests__/*.spec.js",
     "start": "tsc && nodemon ./src/build/server.js"
   },
   "keywords": [],
