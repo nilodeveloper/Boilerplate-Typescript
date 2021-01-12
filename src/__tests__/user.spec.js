@@ -85,7 +85,6 @@ describe('Usuario - Endpoints', () => {
 
 		describe('POST /login/user', ()=>{
 			it('deve logar o usuário apenas se o token for válido - 200', done => {
-				//	
             chai.request(url_base)
             .post('/login/user')
             .set({ "Authorization": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RlIiwicGFzc3dvcmQiOiJhYmMxMjMiLCJpYXQiOjE2MTA0ODg2MTF9.x3PrzVLqf_nPAEmlKiDw2puS7ZNQxzWBieau2jAGBNM"})
@@ -95,9 +94,9 @@ describe('Usuario - Endpoints', () => {
             });
 			});
 		});		
+
 		describe('POST /login/user', ()=>{
 			it('NÃO deve logar o usuário se o token for inválido - 403', done => {
-				//	
             chai.request(url_base)
             .post('/login/user')
             .set({ "Authorization": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RlIiwicGFzc3dvcmQiOiJhYmMxMjMiLCJpYXQiOjE2MTA0ODg2MTF9.x3PrzVLqf_nPAEmlKiDw2puS7ZNQxzWBieau2jAGBNMerrado"})
@@ -107,5 +106,18 @@ describe('Usuario - Endpoints', () => {
             });
 			});
 		});		
+
+		describe('POST /login/user', ()=>{
+			it('NÃO deve logar o usuário se o token for null - 401', done => {
+            chai.request(url_base)
+            .post('/login/user')
+            .set({ "Authorization": "jwt  "})
+            .end((err, res) => {
+                res.should.have.status(401);
+            		done();
+            });
+			});
+		});		
+
 
 });
