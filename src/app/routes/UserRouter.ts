@@ -4,28 +4,26 @@ import UserController from "../controllers/UserController";
 class UserRouter{
 	
 	router: any;			
-	userController: UserController;
 
 	constructor(){
 		this.router = express();
-		this.userController = new UserController();
 		return this.routes();
 	}
 
 	index(){
-		return this.router.get('/users', this.userController.index)
+		return this.router.get('/users', UserController.index)
 	}
 
 	save(){
-		return this.router.post('/register/user', this.userController.save)
+		return this.router.post('/register/user', UserController.save)
 	}
 
 	update(){
-		return this.router.put('/update/user', this.userController.update)
+		return this.router.put('/update/user', UserController.update)
 	}
 
 	login(){
-		return this.router.post('/login/user', this.userController.login)
+		return this.router.post('/login/user', UserController.login)
 	}
 
 	routes(): any{

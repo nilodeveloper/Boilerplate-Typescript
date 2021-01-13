@@ -8,20 +8,19 @@ var UserController_1 = __importDefault(require("../controllers/UserController"))
 var UserRouter = (function () {
     function UserRouter() {
         this.router = express_1["default"]();
-        this.userController = new UserController_1["default"]();
         return this.routes();
     }
     UserRouter.prototype.index = function () {
-        return this.router.get('/users', this.userController.index);
+        return this.router.get('/users', UserController_1["default"].index);
     };
     UserRouter.prototype.save = function () {
-        return this.router.post('/register/user', this.userController.save);
+        return this.router.post('/register/user', UserController_1["default"].save);
     };
     UserRouter.prototype.update = function () {
-        return this.router.put('/update/user', this.userController.update);
+        return this.router.put('/update/user', UserController_1["default"].update);
     };
     UserRouter.prototype.login = function () {
-        return this.router.post('/login/user', this.userController.login);
+        return this.router.post('/login/user', UserController_1["default"].login);
     };
     UserRouter.prototype.routes = function () {
         return [
