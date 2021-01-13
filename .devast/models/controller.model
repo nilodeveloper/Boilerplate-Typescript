@@ -1,0 +1,35 @@
+import { Request, Response } from "express";
+import { getRepository } from "typeorm";
+import *Name from '../database/entity/*Name';
+import Auth from '../middlewares/auth';
+import * as jwt from "jsonwebtoken";
+
+class *NameController{	
+	async index(req: Request, res: Response){	
+		const *name = await getRepository(*Name).createQueryBuilder("*name")
+		.select(["id"]).getRawMany();
+
+		return res.json(*name)
+	}
+
+	async save(req: Request, res: Response){	
+		const repository = getRepository(*name);
+		const { column1, column2, ... } = req.body;
+		const *name = repository.create({ column1, column2, ... });
+		await repository.save(*name);
+		return res.json(*name);
+	}
+
+	async update(req: Request, res: Response){
+		const { column1, column2, ... } = req.body;
+		const repository = getRepository(*Name).createQueryBuilder()
+    .update(*Name)
+    .set({ column: value })
+    .where("id = :id", { id: value_of_id })
+    .execute();
+		
+		return res.json({status: "operação realizada com sucesso"})
+	}
+}
+
+export default new *NameController()
