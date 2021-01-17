@@ -10,6 +10,9 @@ then
 	fi
 	cat ./models/controller.model | sed "s/*NameController/${name^}Controller/g" | sed "s/*name/${name,,}/g" | sed "s/*Name/${name^}/g" > ../src/app/controllers/${name^}Controller.ts
 	cat ./models/router.model | sed "s/*NameController/${name^}Controller/g"| sed "s/*NameRouter/${name^}Router/g" | sed "s/*name/${name,,}/g" | sed "s/*Name/${name^}/g" > ../src/app/routes/${name^}Router.ts
+	sed -i "2i import ${name^}Router from \"./routes/${name^}Router\";" ../src/app/routes.ts
+	sed -i "/this.user(),/a this.${name,,}()," ../src/app/routes.ts
+	sed -i "/routes(): any{/i     ${name,,}(){return ${name^}Router;}" ../src/app/routes.ts
 	echo 🎮 Arquivo de controller ${name^}Controller.ts criado com sucesso.✔️
 	echo 🪧 Arquivo de router ${name^}Router.ts criado com sucesso.✔️
 	echo 🧪 Arquivo de testes ${name,,}.spec.js criado com sucesso.✔️

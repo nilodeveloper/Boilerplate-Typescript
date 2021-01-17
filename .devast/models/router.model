@@ -22,16 +22,11 @@ class *NameRouter{
 		return this.router.put('/update/*name', *NameController.update)
 	}
 
-	login(){
-		return this.router.post('/login/*name', *NameController.login)
-	}
-
 	routes(): any{
 		return [
 			this.index(),
 			this.save(),
 			this.update(),
-			this.login()
 		];
 	}
 }

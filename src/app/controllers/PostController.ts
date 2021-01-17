@@ -1,29 +1,29 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { *Name } from '../database/entity/*Name';
+import { Post } from '../database/entity/Post';
 import Auth from '../middlewares/auth';
 import * as jwt from "jsonwebtoken";
 
-class *NameController{	
+class PostController{	
 	async index(req: Request, res: Response){	
-		const *name = await getRepository(*Name).createQueryBuilder("*name")
+		const post = await getRepository(Post).createQueryBuilder("post")
 		.select(["id"]).getRawMany();
 
-		return res.json(*name)
+		return res.json(post)
 	}
 
 	async save(req: Request, res: Response){	
-		const repository = getRepository(*Name);
+		const repository = getRepository(Post);
 		const { id } = req.body;
-		const *name = repository.create({ id });
-		await repository.save(*name);
-		return res.json(*name);
+		const post = repository.create({ id });
+		await repository.save(post);
+		return res.json(post);
 	}
 
 	async update(req: Request, res: Response){
 		const { id } = req.body;
-		const repository = getRepository(*Name).createQueryBuilder()
-    .update(*Name)
+		const repository = getRepository(Post).createQueryBuilder()
+    .update(Post)
     .set({ column: id })
     .where("id = :id", { id: 'test' })
     .execute();
@@ -32,4 +32,4 @@ class *NameController{
 	}
 }
 
-export default new *NameController()
+export default new PostController()

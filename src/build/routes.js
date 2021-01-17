@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var express_1 = __importDefault(require("express"));
+var PostRouter_1 = __importDefault(require("./routes/PostRouter"));
 var UserRouter_1 = __importDefault(require("./routes/UserRouter"));
 var Router = (function () {
     function Router() {
@@ -13,9 +14,11 @@ var Router = (function () {
     Router.prototype.user = function () {
         return UserRouter_1["default"];
     };
+    Router.prototype.post = function () { return PostRouter_1["default"]; };
     Router.prototype.routes = function () {
         return [
-            this.user()
+            this.user(),
+            this.post(),
         ];
     };
     return Router;
