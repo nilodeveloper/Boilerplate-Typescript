@@ -36,30 +36,66 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var PostController = (function () {
-    function PostController() {
+exports.CreateUserTable1610058718148 = void 0;
+var typeorm_1 = require("typeorm");
+var CreateUserTable1610058718148 = (function () {
+    function CreateUserTable1610058718148() {
     }
-    PostController.prototype.index = function (req, res) {
+    CreateUserTable1610058718148.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
+                switch (_a.label) {
+                    case 0: return [4, queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')];
+                    case 1:
+                        _a.sent();
+                        return [4, queryRunner.createTable(new typeorm_1.Table({
+                                name: 'users',
+                                columns: [
+                                    {
+                                        name: 'id',
+                                        type: 'uuid',
+                                        isPrimary: true,
+                                        generationStrategy: 'uuid',
+                                        "default": 'uuid_generate_v4()'
+                                    },
+                                    {
+                                        name: 'username',
+                                        type: 'varchar',
+                                        isUnique: true
+                                    },
+                                    {
+                                        name: 'email',
+                                        type: 'varchar',
+                                        isUnique: true
+                                    },
+                                    {
+                                        name: 'password',
+                                        type: 'varchar'
+                                    }
+                                ]
+                            }))];
+                    case 2:
+                        _a.sent();
+                        return [2];
+                }
             });
         });
     };
-    PostController.prototype.save = function (req, res) {
+    CreateUserTable1610058718148.prototype.down = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
+                switch (_a.label) {
+                    case 0: return [4, queryRunner.dropTable('users')];
+                    case 1:
+                        _a.sent();
+                        return [4, queryRunner.query('DROP EXTENSION "uuid-ossp"')];
+                    case 2:
+                        _a.sent();
+                        return [2];
+                }
             });
         });
     };
-    PostController.prototype.update = function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
-            });
-        });
-    };
-    return PostController;
+    return CreateUserTable1610058718148;
 }());
-exports["default"] = new PostController();
+exports.CreateUserTable1610058718148 = CreateUserTable1610058718148;

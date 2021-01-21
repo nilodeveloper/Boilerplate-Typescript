@@ -36,30 +36,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var PostController = (function () {
-    function PostController() {
+exports.CreateTablePost1610739768038 = void 0;
+var CreateTablePost1610739768038 = (function () {
+    function CreateTablePost1610739768038() {
     }
-    PostController.prototype.index = function (req, res) {
+    CreateTablePost1610739768038.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
+                return [2];
             });
         });
     };
-    PostController.prototype.save = function (req, res) {
+    CreateTablePost1610739768038.prototype.down = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
+                return [2];
             });
         });
     };
-    PostController.prototype.update = function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
-            });
-        });
-    };
-    return PostController;
+    return CreateTablePost1610739768038;
 }());
-exports["default"] = new PostController();
+exports.CreateTablePost1610739768038 = CreateTablePost1610739768038;

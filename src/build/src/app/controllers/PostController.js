@@ -36,26 +36,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+var typeorm_1 = require("typeorm");
+var Post_1 = require("../database/entity/Post");
 var PostController = (function () {
     function PostController() {
     }
     PostController.prototype.index = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
+            var post;
             return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
+                switch (_a.label) {
+                    case 0: return [4, typeorm_1.getRepository(Post_1.Post).createQueryBuilder("post")
+                            .select(["id"]).getRawMany()];
+                    case 1:
+                        post = _a.sent();
+                        return [2, res.json(post)];
+                }
             });
         });
     };
     PostController.prototype.save = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
+            var repository, id, post;
             return __generator(this, function (_a) {
-                return [2, res.json({ status: "operação realizada com sucesso" })];
+                switch (_a.label) {
+                    case 0:
+                        repository = typeorm_1.getRepository(Post_1.Post);
+                        id = req.body.id;
+                        post = repository.create({ id: id });
+                        return [4, repository.save(post)];
+                    case 1:
+                        _a.sent();
+                        return [2, res.json(post)];
+                }
             });
         });
     };
     PostController.prototype.update = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
+            var id, repository;
             return __generator(this, function (_a) {
+                id = req.body.id;
+                repository = typeorm_1.getRepository(Post_1.Post).createQueryBuilder()
+                    .update(Post_1.Post)
+                    .set({ column: id })
+                    .where("id = :id", { id: 'test' })
+                    .execute();
                 return [2, res.json({ status: "operação realizada com sucesso" })];
             });
         });

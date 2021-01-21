@@ -8,32 +8,46 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 exports.__esModule = true;
-exports.Post = void 0;
+exports.User = void 0;
 var typeorm_1 = require("typeorm");
-var Post = (function () {
-    function Post() {
+var bcrypt_1 = __importDefault(require("bcrypt"));
+var User = (function () {
+    function User() {
     }
+    User.prototype.hashPassword = function () {
+        this.password = bcrypt_1["default"].hashSync(this.password, 10);
+    };
     __decorate([
         typeorm_1.PrimaryGeneratedColumn('uuid'),
         __metadata("design:type", String)
-    ], Post.prototype, "id");
+    ], User.prototype, "id");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Post.prototype, "title");
+    ], User.prototype, "username");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Post.prototype, "content");
+    ], User.prototype, "email");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], Post.prototype, "id_user");
-    Post = __decorate([
-        typeorm_1.Entity('posts')
-    ], Post);
-    return Post;
+    ], User.prototype, "password");
+    __decorate([
+        typeorm_1.BeforeInsert(),
+        typeorm_1.BeforeUpdate(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], User.prototype, "hashPassword");
+    User = __decorate([
+        typeorm_1.Entity('users')
+    ], User);
+    return User;
 }());
-exports.Post = Post;
-exports["default"] = Post;
+exports.User = User;
+exports["default"] = User;

@@ -7,6 +7,7 @@
 		"esModuleInterop": true,
 		"outDir": "./src/build/",
 		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true
+		"experimentalDecorators": true,
+		"resolveJsonModule": true
 	}
 }
