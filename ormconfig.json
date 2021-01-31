@@ -6,16 +6,16 @@
    "password": "abc123",
    "database": "oni",
    "entities": [
-      "src/build/database/entity/**/*.js"
+      "build/database/entity/**/*.js"
    ],
    "migrations": [
-      "./src/build/database/migrations/**/*.js"
+      "./build/database/migrations/**/*.js"
    ],
    "subscribers": [
       "src/subscriber/**/*.ts"
    ],
 	 "cli": {
-   		"migrationsDir": "./src/app/database/migrations/",
-			"entitiesDir": "./src/app/database/entity/"
+   		"migrationsDir": "./src/database/migrations/",
+			"entitiesDir": "./src/database/entity/"
    }
 }
