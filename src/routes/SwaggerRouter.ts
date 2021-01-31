@@ -4,7 +4,7 @@ class HealthcheckRouter{
 	
     router: any;			
     swaggerUi = require('swagger-ui-express');
-	swaggerDocument = require('./../../../swagger.json');
+	swaggerDocument = require('./../../swagger.json');
 
 	constructor(){
 		this.router = express();
