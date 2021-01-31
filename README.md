@@ -1,7 +1,7 @@
 # Boilerplate Typescript
 Projeto padrão em Typescript para ser usado como base para aplicações web.
 
-# Configuração Incial
+# Configuração Incial 
  - Criar .env com o atributo SECRET e colocar sua string (SECRET=exemplo_de_string).
  - ormconfig você configura de acordo com a configuração do seu database.
 
