@@ -8,9 +8,17 @@ var PostRouter_1 = __importDefault(require("./routes/PostRouter"));
 var UserRouter_1 = __importDefault(require("./routes/UserRouter"));
 var Router = (function () {
     function Router() {
+        this.swaggerUi = require('swagger-ui-express');
+        this.swaggerDocument = require('./swagger.json');
         this.route = express_1["default"]();
         return this.routes();
     }
+    Router.prototype.swagger = function () {
+        return [
+            this.route.use('/swagger', this.swaggerUi.serve),
+            this.route.get('/swagger', this.swaggerUi.setup(this.swaggerDocument))
+        ];
+    };
     Router.prototype.user = function () {
         return UserRouter_1["default"];
     };
@@ -19,6 +27,7 @@ var Router = (function () {
         return [
             this.user(),
             this.post(),
+            this.swagger(),
         ];
     };
     return Router;
