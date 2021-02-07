@@ -10,5 +10,5 @@ Projeto padrão em Typescript para ser usado como base para aplicações web.
 
 # Ferramentas
 Linguagem | ORM | Framework Web | Framework TDD | Password-Hashing | Render | Auth | Documentation |
---- | --- | --- | --- | --- | --- | --- | --- | --- |
+--- | --- | --- | --- | --- | --- | --- | --- | ---
 Typescript | TypeORM | ExpressJS | Mocha/Chai | Bcrypt | Pug | JWT | Swagger | i18n-ryla
