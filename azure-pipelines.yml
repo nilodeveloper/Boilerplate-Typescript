@@ -6,7 +6,7 @@
 trigger:
 - master
 
-pool: DESKTOP-GJ18MD2
+pool: Default
 
 steps:
 - task: NodeTool@0
